@@ -1,28 +1,20 @@
-# Ex: 1
-# Program that asks the user to enter their name and their age. Print out a message addressed to them that tells them the year that they will turn 100 years old.
-# 
-# 
-
-# # Extras:
-# 
-# Add on to the previous program by asking the user for another number and printing out that many copies of the previous message. (Hint: order of operations exists in Python)
-# Print out that many copies of the previous message on separate lines. (Hint: the string "\n is the same as pressing the ENTER button)
-# 
-
-#importing datetime module
-from datetime import datetime as date
-
-#asking the user name
-name = input('Type your name:')
-
-#asking age and converting to int if needed
-age = int(input('Type your age:'))
-
-#get the current year
-now = date.now()
-
-#get difference between age for 100 years
-diff = 100 - age
-
-#show exactly year that user will turn 100 years old
-print 'Hi'+' '+name+" you will complete 100 years in ",(now.year+diff))
+print(" this app tells the year you are gonna be 100 years old")
+""" This part is the part that tells the date of today"""
+from datetime import datetime
+now = datetime.now()
+current_year = now.year
+current_month = now.month
+current_day = now.day
+""" This part is the personal input part"""
+name = input(" what is your name?\t")
+print(" your name is " + name)
+age = input(" what\'s your age?\t")
+while not (age.isdigit()):
+    print(" please try again")
+    age = input(" what\'s your age?\t")
+print('your age is ' +age)
+""" The part of naming and age ends here then we move to persons aging part"""
+year = str((current_year - int(age)) + 100)
+birthyear = str( current_year - int(age))
+print( name + " your birth year is " + birthyear)
+print( "and you will be 100 years old in the year " + year)
