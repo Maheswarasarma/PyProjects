@@ -7,6 +7,9 @@ current_month = now.month
 current_day = now.day
 """ This part is the personal input part"""
 name = input(" what is your name?\t")
+while not (name.isalpha()):
+    print("please try again")
+    name =input("What is your name?\t")
 print(" your name is " + name)
 age = input(" what\'s your age?\t")
 while not (age.isdigit()):
