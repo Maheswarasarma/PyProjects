@@ -1,0 +1,32 @@
+from sklearn.datasets import load_boston
+import pandas as pd
+boston = load_boston()
+dataset = pd.DataFrame(data=boston.data, columns=boston.feature_names)
+dataset['target'] = boston.target
+print(dataset.head())
+
+from pandas import DataFrame
+import matplotlib.pyplot as plt
+
+ 
+df = DataFrame(dataset,columns=['CRIM','ZN','INDUS','CHAS','NOX','RM','AGE','DIS','RAD','TAX','PTRATIO','B','LSTAT','target'])
+X= df[['CRIM','ZN','INDUS','CHAS','NOX','RM','AGE','DIS','RAD','TAX','PTRATIO','B','LSTAT']]
+
+Y=df[['target']]
+
+corr_values=X.corr()
+print(corr_values)
+corr_value=0.288250
+plt.scatter(df['CRIM'], df['PTRATIO'], color='red')
+plt.title('CRIM Vs PTRATIO', fontsize=14)
+plt.xlabel('CRIM', fontsize=14)
+plt.ylabel('PTRATIO', fontsize=14)
+plt.grid(True)
+plt.show()
+
+
+import statsmodels.api as sm
+X=sm.add_constant(X)
+statsModel=sm.OLS(Y,X)
+fittedModel=statsModel.fit()
+print(fittedModel.summary())
